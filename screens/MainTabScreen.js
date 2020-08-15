@@ -17,21 +17,16 @@ import CarScreen from './CarScreen';
 import PhoneScreen from './PhoneScreen';
 import ImmgrateScreen from './ImmgrateScreen';
 
+import HouseDetailScreen from './HouseDetailScreen';
+import CarDetailScreen from './CarDetailScreen';
+import PhoneDetailScreen from './PhoneDetailScreen';
+
 const FeedStack = createStackNavigator();
 const HouseStack = createStackNavigator();
 const CarStack = createStackNavigator();
 const PhoneStack = createStackNavigator();
 const ImmgrateStack = createStackNavigator();
 //]]
-
-
-import CommunityScreen from './CommunityScreen';
-import ExerScreen from './ExerScreen';
-import DetailsScreen from './DetailsScreen';
-import ExploreScreen from './ExploreScreen';
-import ProfileScreen from './ProfileScreen';
-const DetailsStack = createStackNavigator();
-const ProfileStack = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -62,6 +57,7 @@ const MainTabScreen = () => (
         ),
       }}
     />
+   
     <Tab.Screen
       name="Car"
       component={CarStackScreen}
@@ -133,7 +129,7 @@ const HouseStackScreen = ({ navigation }) => (
     }
   }}>
     <HouseStack.Screen name="Home" component={HouseScreen} options={{
-      title: 'Finding a house',
+      title: '집구하기',
       headerLeft: () => (
         <Icon.Button name="ios-menu" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
@@ -142,7 +138,18 @@ const HouseStackScreen = ({ navigation }) => (
       ),
       
     }} />
+    <HouseStack.Screen name="HouseDetailScreen" component={HouseDetailScreen} options={{
+      title: '집 검색',
+      headerLeft: () => (
+        <Icon.Button name="ios-arrow-back" size={25} backgroundColor={bg} onPress={() => navigation.navigate("Home")}></Icon.Button>
+      ),
+      headerRight: () => (
+        <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
+      ),
+      
+    }} />
   </HouseStack.Navigator>
+  
 );
 
 const CarStackScreen = ({ navigation }) => (
@@ -155,8 +162,8 @@ const CarStackScreen = ({ navigation }) => (
       fontWeight: 'bold'
     }
   }}>
-    <CarStack.Screen name="Car" component={CarScreen} options={{
-      title: 'Finding a Car',
+    <CarStack.Screen name="CarScreen" component={CarScreen} options={{
+      title: '차 구하기',
       headerLeft: () => (
         <Icon.Button name="ios-menu" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
@@ -164,6 +171,16 @@ const CarStackScreen = ({ navigation }) => (
         <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
     }} />
+  
+  <CarStack.Screen name="CarDetailScreen" component={CarDetailScreen} options={{
+    title: '차 검색',
+    headerLeft: () => (
+      <Icon.Button name="ios-arrow-back" size={25} backgroundColor={bg} onPress={() => navigation.navigate("CarScreen")}></Icon.Button>
+    ),
+    headerRight: () => (
+      <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
+    ),
+  }} />
   </CarStack.Navigator>
 );
 
@@ -177,10 +194,19 @@ const PhoneStackScreen = ({ navigation }) => (
       fontWeight: 'bold'
     }
   }}>
-    <PhoneStack.Screen name="Phone" component={PhoneScreen} options={{
-      title: 'Finding a Phone',
+    <PhoneStack.Screen name="PhoneScreen" component={PhoneScreen} options={{
+      title: '폰 구하기',
       headerLeft: () => (
         <Icon.Button name="ios-menu" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
+      ),
+      headerRight: () => (
+        <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
+      ),
+    }} />
+    <PhoneStack.Screen name="PhoneDetailScreen" component={PhoneDetailScreen} options={{
+      title: '폰 검색',
+      headerLeft: () => (
+        <Icon.Button name="ios-arrow-back" size={25} backgroundColor={bg} onPress={() => navigation.navigate("PhoneScreen")}></Icon.Button>
       ),
       headerRight: () => (
         <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
@@ -200,7 +226,7 @@ const ImmgrateStackScreen = ({ navigation }) => (
     }
   }}>
     <ImmgrateStack.Screen name="Immgrate" component={ImmgrateScreen} options={{
-      title: 'Immigration services',
+      title: '이민 서비스',
       headerLeft: () => (
         <Icon.Button name="ios-menu" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
@@ -211,21 +237,20 @@ const ImmgrateStackScreen = ({ navigation }) => (
   </ImmgrateStack.Navigator>
 );
 
-// const DetailsStackScreen = ({ navigation }) => (
+// const DetailsStackScreen = ({navigation}) => (
 //   <DetailsStack.Navigator screenOptions={{
-//     headerStyle: {
-//       backgroundColor: '#1f65ff',
-//     },
-//     headerTintColor: '#fff',
-//     headerTitleStyle: {
-//       fontWeight: 'bold'
-//     }
-//   }}>
-//     <DetailsStack.Screen name="Details" component={DetailsScreen} options={{
-//       title: '홈 & 피드',
-//       headerLeft: () => (
-//         <Icon.Button name="ios-menu" size={25} backgroundColor="#1f65ff" onPress={() => navigation.openDrawer()}></Icon.Button>
-//       )
-//     }} />
+//           headerStyle: {
+//           backgroundColor: '#1f65ff',
+//           },
+//           headerTintColor: '#fff',
+//           headerTitleStyle: {
+//           fontWeight: 'bold'
+//           }
+//       }}>
+//           <DetailsStack.Screen name="Details" component={DetailsScreen} options={{
+//           headerLeft: () => (
+//               <Icon.Button name="ios-menu" size={25} backgroundColor="#1f65ff" onPress={() => navigation.openDrawer()}></Icon.Button>
+//           )
+//           }} />
 //   </DetailsStack.Navigator>
-// );
+//   );
