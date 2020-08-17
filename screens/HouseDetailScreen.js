@@ -7,12 +7,14 @@ import {
   StatusBar,
   TouchableOpacity,
   ScrollView,
+  FlatList,
 } from 'react-native';
 
 import {
   bg,
   btn_Gradient_up,
   btn_Gradient_down,
+  card_marginVertical,
 } from './Config';
 
 import {useTheme} from '@react-navigation/native';
@@ -23,9 +25,19 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import StarRating from '../components/StarRating';
+import {data} from '../model/data';
+import Card from '../components/Card';
 
 const HouseDetailScreen = ({navigation}) => {
 
+  const renderItem = ({item}) => {
+    return (
+        <Card 
+            itemData={item}
+            onPress={()=> navigation.navigate('CardItemDetails', {itemData: item})}
+        />
+    );
+  };
   const { colors } = useTheme();
 
   const theme = useTheme();
@@ -73,55 +85,15 @@ const HouseDetailScreen = ({navigation}) => {
             }}>
             검색 결과
           </Text>
-
-        <View style={styles.card}>
-          <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('../assets/banners/food-banner2.jpg')}
-              resizeMode="cover"
-              style={styles.cardImg}
-            />
-          </View>
-          <View style={styles.cardInfo}>
-            <Text style={styles.cardTitle}>Amazing Food Place</Text>
-            <StarRating ratings={4} reviews={99} />
-            <Text style={styles.cardDetails}>
-              Amazing description for this amazing place
-            </Text>
-          </View>
+          
+        <View style={styles.container}>
+          <FlatList 
+              data={data}
+              renderItem={renderItem}
+              keyExtractor={item => item.id}
+          />
         </View>
-        <View style={styles.card}>
-          <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('../assets/banners/food-banner3.jpg')}
-              resizeMode="cover"
-              style={styles.cardImg}
-            />
-          </View>
-          <View style={styles.cardInfo}>
-            <Text style={styles.cardTitle}>Amazing Food Place</Text>
-            <StarRating ratings={4} reviews={99} />
-            <Text style={styles.cardDetails}>
-              Amazing description for this amazing place
-            </Text>
-          </View>
-        </View>
-        <View style={styles.card}>
-          <View style={styles.cardImgWrapper}>
-            <Image
-              source={require('../assets/banners/food-banner4.jpg')}
-              resizeMode="cover"
-              style={styles.cardImg}
-            />
-          </View>
-          <View style={styles.cardInfo}>
-            <Text style={styles.cardTitle}>Amazing Food Place</Text>
-            <StarRating ratings={4} reviews={99} />
-            <Text style={styles.cardDetails}>
-              Amazing description for this amazing place
-            </Text>
-          </View>
-        </View>
+        
       </View>
       </ScrollView>
     );
@@ -155,12 +127,13 @@ const styles = StyleSheet.create({
   },
   cardsWrapper: {
     marginTop: 20,
+    marginBottom: 20,
     width: '95%',
     alignSelf: 'center',
   },
   card: {
     height: 100,
-    marginVertical: 10,
+    marginVertical: card_marginVertical,
     flexDirection: 'row',
     shadowColor: '#999',
     shadowOffset: {width: 0, height: 1},

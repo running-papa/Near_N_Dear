@@ -6,6 +6,7 @@ import {
   bg,
   btn_Gradient_up,
   btn_Gradient_down,
+  Text_color,
 } from './Config';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -21,6 +22,8 @@ import HouseDetailScreen from './HouseDetailScreen';
 import CarDetailScreen from './CarDetailScreen';
 import PhoneDetailScreen from './PhoneDetailScreen';
 
+import CardItemDetails from './CardItemDetails';
+
 const FeedStack = createStackNavigator();
 const HouseStack = createStackNavigator();
 const CarStack = createStackNavigator();
@@ -33,7 +36,7 @@ const Tab = createMaterialBottomTabNavigator();
 const MainTabScreen = () => (
   <Tab.Navigator
     initialRouteName="Feed"
-    activeColor="#fff"
+    activeColor="#FFF"
   >
     <Tab.Screen
       name="Feed"
@@ -42,7 +45,7 @@ const MainTabScreen = () => (
         tabBarLabel: 'Feed',
         tabBarColor: bg,
         tabBarIcon: ({ color }) => (
-          <Icon name="ios-notifications" color={color} size={26} />
+          <Icon name="ios-notifications" color={Text_color} size={26} />
         ),
       }}
     />
@@ -53,7 +56,7 @@ const MainTabScreen = () => (
         tabBarLabel: 'House',
         tabBarColor: bg,
         tabBarIcon: ({ color }) => (
-          <Icon name="ios-home" color={color} size={26} />
+          <Icon name="ios-home" color={Text_color} size={26} />
         ),
       }}
     />
@@ -65,7 +68,7 @@ const MainTabScreen = () => (
         tabBarLabel: 'Car',
         tabBarColor: bg,
         tabBarIcon: ({ color }) => (
-          <Icon name="ios-car" color={color} size={26} />
+          <Icon name="ios-car" color={Text_color} size={26} />
         ),
       }}
     />
@@ -76,7 +79,7 @@ const MainTabScreen = () => (
         tabBarLabel: 'Phone',
         tabBarColor: bg,
         tabBarIcon: ({ color }) => (
-          <Icon name="ios-phone-portrait" color={color} size={26} />
+          <Icon name="ios-phone-portrait" color={Text_color} size={26} />
         ),
       }}
     />
@@ -87,7 +90,7 @@ const MainTabScreen = () => (
         tabBarLabel: 'Immgrate',
         tabBarColor: bg,
         tabBarIcon: ({ color }) => (
-          <Icon name="ios-airplane" color={color} size={26} />
+          <Icon name="ios-airplane" color={Text_color} size={26} />
         ),
       }}
     />
@@ -101,7 +104,7 @@ const FeedStackScreen = ({ navigation }) => (
     headerStyle: {
       backgroundColor: bg,
     },
-    headerTintColor: '#fff',
+    headerTintColor: "#fff",
     headerTitleStyle: {
       fontWeight: 'bold'
     }
@@ -115,6 +118,17 @@ const FeedStackScreen = ({ navigation }) => (
         <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
     }} />
+    <FeedStack.Screen 
+        name="CardItemDetails"
+        component={CardItemDetails}
+        options={({route}) => ({
+          // title: route.params.title,
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: '#fff'
+        })}
+      />
   </FeedStack.Navigator>
 );
 
@@ -148,6 +162,17 @@ const HouseStackScreen = ({ navigation }) => (
       ),
       
     }} />
+    <HouseStack.Screen 
+        name="CardItemDetails"
+        component={CardItemDetails}
+        options={({route}) => ({
+          // title: route.params.title,
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: '#fff'
+        })}
+      />
   </HouseStack.Navigator>
   
 );
@@ -181,6 +206,17 @@ const CarStackScreen = ({ navigation }) => (
       <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
     ),
   }} />
+  <CarStack.Screen 
+        name="CardItemDetails"
+        component={CardItemDetails}
+        options={({route}) => ({
+          // title: route.params.title,
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: '#fff'
+        })}
+      />
   </CarStack.Navigator>
 );
 
@@ -212,6 +248,18 @@ const PhoneStackScreen = ({ navigation }) => (
         <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
     }} />
+
+    <PhoneStack.Screen 
+        name="CardItemDetails"
+        component={CardItemDetails}
+        options={({route}) => ({
+          // title: route.params.title,
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: '#fff'
+        })}
+      />
   </PhoneStack.Navigator>
 );
 
@@ -236,21 +284,3 @@ const ImmgrateStackScreen = ({ navigation }) => (
     }} />
   </ImmgrateStack.Navigator>
 );
-
-// const DetailsStackScreen = ({navigation}) => (
-//   <DetailsStack.Navigator screenOptions={{
-//           headerStyle: {
-//           backgroundColor: '#1f65ff',
-//           },
-//           headerTintColor: '#fff',
-//           headerTitleStyle: {
-//           fontWeight: 'bold'
-//           }
-//       }}>
-//           <DetailsStack.Screen name="Details" component={DetailsScreen} options={{
-//           headerLeft: () => (
-//               <Icon.Button name="ios-menu" size={25} backgroundColor="#1f65ff" onPress={() => navigation.openDrawer()}></Icon.Button>
-//           )
-//           }} />
-//   </DetailsStack.Navigator>
-//   );
