@@ -37,6 +37,7 @@ const MainTabScreen = () => (
   <Tab.Navigator
     initialRouteName="Feed"
     activeColor="#FFF"
+    
   >
     <Tab.Screen
       name="Feed"
@@ -103,6 +104,8 @@ const FeedStackScreen = ({ navigation }) => (
   <FeedStack.Navigator screenOptions={{
     headerStyle: {
       backgroundColor: bg,
+      borderBottomRightRadius: 15,
+      borderBottomLeftRadius: 15,
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
@@ -118,6 +121,33 @@ const FeedStackScreen = ({ navigation }) => (
         <Icon.Button name="ios-cart" size={25} backgroundColor={bg} onPress={() => navigation.openDrawer()}></Icon.Button>
       ),
     }} />
+    <FeedStack.Screen name="HouseDetailScreen" component={HouseDetailScreen} 
+      options={({route}) => ({
+        // title: route.params.title,
+        headerBackTitleVisible: false,
+        headerTitle: false,
+        headerTransparent: true,
+        headerTintColor: '#fff'
+      })} 
+    />
+    <FeedStack.Screen name="CarDetailScreen" component={CarDetailScreen} 
+      options={({route}) => ({
+        // title: route.params.title,
+        headerBackTitleVisible: false,
+        headerTitle: false,
+        headerTransparent: true,
+        headerTintColor: '#fff'
+      })} 
+    />
+    <FeedStack.Screen name="PhoneDetailScreen" component={PhoneDetailScreen} 
+      options={({route}) => ({
+        // title: route.params.title,
+        headerBackTitleVisible: false,
+        headerTitle: false,
+        headerTransparent: true,
+        headerTintColor: '#fff'
+      })} 
+    />
     <FeedStack.Screen 
         name="CardItemDetails"
         component={CardItemDetails}
@@ -136,6 +166,8 @@ const HouseStackScreen = ({ navigation }) => (
   <HouseStack.Navigator screenOptions={{
     headerStyle: {
       backgroundColor: bg,
+      borderBottomRightRadius: 15,
+      borderBottomLeftRadius: 15,
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -181,6 +213,8 @@ const CarStackScreen = ({ navigation }) => (
   <CarStack.Navigator screenOptions={{
     headerStyle: {
       backgroundColor: bg,
+      borderBottomRightRadius: 15,
+      borderBottomLeftRadius: 15,
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -224,6 +258,8 @@ const PhoneStackScreen = ({ navigation }) => (
   <PhoneStack.Navigator screenOptions={{
     headerStyle: {
       backgroundColor: bg,
+      borderBottomRightRadius: 15,
+      borderBottomLeftRadius: 15,
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -267,6 +303,8 @@ const ImmgrateStackScreen = ({ navigation }) => (
   <ImmgrateStack.Navigator screenOptions={{
     headerStyle: {
       backgroundColor: bg,
+      borderBottomRightRadius: 15,
+      borderBottomLeftRadius: 15,
     },
     headerTintColor: '#fff',
     headerTitleStyle: {

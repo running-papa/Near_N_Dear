@@ -32,8 +32,8 @@ export default FeedCard;
 
 const styles = StyleSheet.create({
   card: {
-    height: 200,
-    width: 200,
+    height: 180,
+    width: 180,
     margin: 2,
     flexDirection: 'row',
     shadowColor: '#999',
@@ -66,12 +66,12 @@ const styles = StyleSheet.create({
     bottom: 5,
     margin: 5,
     left: 5,
-    width: 180,
-    height:60,
+    width: 160,
+    height:55,
   },
   cardTitle: {
     fontSize: 12,
-    width:150,
+    width:130,
     fontWeight: 'bold',
   },
   cardDetails: {

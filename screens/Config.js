@@ -20,6 +20,12 @@ export const btn_Gradient_up = '#ffb340';
 export const btn_Gradient_down = '#ff820d';
 export const Text_color = '#ffffff';
 
+//민트초코
+// export const bg = '#54e3b1';
+// export const btn_Gradient_up = '#521400';
+// export const btn_Gradient_down = '#360d00';
+// export const Text_color = '#521400';
+
 
 //detail screen
 export const card_marginVertical = 1;
